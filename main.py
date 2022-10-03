@@ -3,12 +3,15 @@ import os
 import json
 
 # Setup database.
-os.remove("spotify.db")
-con = sqlite3.connect("spotify.db")
+try:
+    os.remove("database.db")
+except:
+    pass
+con = sqlite3.connect("database.db")
 cur = con.cursor()
 
 # Load a small slice of the actual dataset.
-with open("data_small.json", "r") as read_file:
+with open("dataset_small.json", "r") as read_file:
     data_small = json.load(read_file)
 
 # Create tables.
